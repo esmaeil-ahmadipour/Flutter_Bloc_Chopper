@@ -2,8 +2,18 @@ import 'package:chopper/chopper.dart';
 
 part 'api_services.chopper.dart';
 
-@ChopperApi(baseUrl: "")
+@ChopperApi()
 abstract class ApiService extends ChopperService {
-  @Post()
+  @Post(path: "/login")
   Future<Response> getResult(@Body() Map<String, dynamic> body);
+
+  static ApiService create() {
+    final client = ChopperClient(
+      baseUrl: "https://reqres.in/api",
+      services: [_$ApiService()],
+      converter: JsonConverter(),
+      errorConverter: JsonConverter(),
+    );
+    return _$ApiService(client);
+  }
 }
