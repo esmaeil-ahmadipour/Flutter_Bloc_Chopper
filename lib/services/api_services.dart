@@ -6,7 +6,7 @@ part 'api_services.chopper.dart';
 @ChopperApi()
 abstract class ApiService extends ChopperService {
   @Post(path: "/login")
-  Future<Response<Login>> getResult(@Body() Map<String, dynamic> body);
+  Future<Response> getResult(@Body() Map<String, dynamic> body);
 
   static ApiService create() {
     final client = ChopperClient(

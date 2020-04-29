@@ -8,9 +8,13 @@ abstract class LoginState {}
 class InitialLoginState extends LoginState {}
 class LoadingLoginState extends LoginState{}
 class LoadedLoginState extends LoginState{
-  final Response<Login> login;
+  final Login login;
 
   LoadedLoginState({@required this.login});
 
 }
-class ErrorLoginState extends LoginState{}
+class ErrorLoginState extends LoginState{
+  final String error;
+
+  ErrorLoginState({@required this.error});
+}

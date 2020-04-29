@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterblocchopper/blocs/login/bloc.dart';
 import 'package:flutterblocchopper/ui/screeens/signup.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,10 +11,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  LoginBloc loginBloc;
 
   @override
   void initState() {
     super.initState();
+    loginBloc = LoginBloc();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    emailController.dispose();
+    loginBloc.close();
+    super.dispose();
   }
 
   @override
@@ -61,7 +73,15 @@ class _HomePageState extends State<HomePage> {
                   const EdgeInsetsDirectional.only(top: 16.0, bottom: 16.0),
               child: RaisedButton(
                 color: Theme.of(context).primaryColor,
-                onPressed: () {},
+                onPressed: () {
+                  if (emailController.value.text.contains("@")) {
+                    loginBloc.add(
+                      Fetch(
+                          email: emailController.value.text,
+                          password: passwordController.value.text),
+                    );
+                  } else {}
+                },
                 child: Center(
                   child: Text(
                     "SIGNIN",
@@ -69,6 +89,22 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+            ),
+            BlocBuilder(
+              bloc: loginBloc,
+              builder: (context, state) {
+                if (state is LoadingLoginState) {
+                  return Text("Waiting.");
+                }
+                if (state is LoadedLoginState) {
+                  return Text("Loaded"+state.login.token.toString());
+                }
+                if (state is ErrorLoginState) {
+                  return Text("Error"+state.error.toString());
+                } else {
+                  return Text("NOTHING.");
+                }
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -17,10 +17,10 @@ class _$ApiService extends ApiService {
   final definitionType = ApiService;
 
   @override
-  Future<Response<Login>> getResult(Map<String, dynamic> body) {
+  Future<Response<dynamic>> getResult(Map<String, dynamic> body) {
     final $url = '/login';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
-    return client.send<Login, Login>($request);
+    return client.send<dynamic, dynamic>($request);
   }
 }
