@@ -8,10 +8,20 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  chopper: ^3.0.2
+  bloc: ^4.0.0
+  flutter_bloc: ^4.0.0
+  json_annotation: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  json_serializable: ^3.3.0
+  chopper_generator:
+  build_runner:
+  built_value_generator:
+
+
 
 flutter:
   uses-material-design: true
