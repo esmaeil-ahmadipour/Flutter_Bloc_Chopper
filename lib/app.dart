@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterblocchopper/ui/screeens/home.dart';
+import 'package:flutterblocchopper/ui/screeens/login.dart';
 
 class MyApp extends StatelessWidget {
 
