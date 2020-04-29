@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterblocchopper/ui/screeens/signup.dart';
 
-class HomePage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SignUpPageState extends State<SignUpPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Center(
               child: Text(
-                'LOGIN',
+                'SignUp',
                 style: TextStyle(
                     fontSize: 30.0, color: Theme.of(context).primaryColor),
               ),
@@ -58,13 +53,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding:
-                  const EdgeInsetsDirectional.only(top: 16.0, bottom: 16.0),
+              const EdgeInsetsDirectional.only(top: 16.0, bottom: 16.0),
               child: RaisedButton(
                 color: Theme.of(context).primaryColor,
                 onPressed: () {},
                 child: Center(
                   child: Text(
-                    "SIGNIN",
+                    "SIGNUP",
                     style: TextStyle(),
                   ),
                 ),
@@ -74,18 +69,17 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(
-                  "Dont Have An Account.",
+                  "Alredy Have An Account.",
                   style: TextStyle(
                     fontSize: 15.0,
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUpPage()));
+                  onTap: (){
+                    Navigator.pop(context);
                   },
                   child: Text(
-                    "SIGNUP",
+                    "SIGNIN",
                     style: TextStyle(
                         fontSize: 15.0, color: Theme.of(context).primaryColor),
                   ),
